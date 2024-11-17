@@ -1,0 +1,44 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Gradle files
+*.gradle
+*.gradle.kts
+.gradle/
+
+# Local configuration file (sdk location, etc.)
+local.properties
+
+# Log files
+*.log
+
+# Android Studio
+.idea/
+*.iml
+
+# Build folders
+build/
+app/build/
+
+# Crashlytics and Fabric
+.fabric/
+
+# Keystore files
+*.jks
+
+# Android device artifacts
+*.apk
+*.aar
