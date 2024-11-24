@@ -1,9 +1,9 @@
 package com.example.securepark.models;
 
 public class User {
-        private String email;
-        private String password;
-        private String confirm_password;
+        public String email;
+        public String password;
+        public String confirm_password;
 
     public void setEmail(String email) {
         this.email = email;

@@ -1,6 +1,7 @@
 package com.example.securepark;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.confirm_password);
         Button signupButton = findViewById(R.id.signup_button);
 
+
+
         ApiService apiService = RetrofitClient.getClient("http://10.0.2.2:8000/").create(ApiService.class);
+
 
         signupButton.setOnClickListener(view -> {
             String emailInput = email.getText().toString();
@@ -46,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
             user.setEmail(emailInput);
             user.setPassword(passwordInput);
             user.setConfirm_password(confirmPasswordInput);
+
+
             apiService.signup(user).enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(MainActivity.this, "Signup successful", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(MainActivity.this, "Signup failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Signup failed: " + response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -61,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+
+
         });
     }
 }
